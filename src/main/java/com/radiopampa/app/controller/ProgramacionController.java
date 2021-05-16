@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.radiopampa.app.model.Programacion;
 import com.radiopampa.app.service.FilesStorageService;
 import com.radiopampa.app.service.ProgramacionServiceApi;
+import com.radiopampa.app.service.ResponseMessage;
 
 @RestController
 @RequestMapping(value = "/api/programacion")
@@ -31,10 +32,12 @@ import com.radiopampa.app.service.ProgramacionServiceApi;
 public class ProgramacionController {
 	@Autowired
 	ProgramacionServiceApi programacionServiceApi;
+	
 	@Autowired
 	  FilesStorageService storageService;
 	@Autowired
 	  ServletContext  servletContext;
+	
 	@GetMapping(value = "/all")
 	public Map<String, Object> listclase() {
 
@@ -67,6 +70,12 @@ public class ProgramacionController {
 	      	headers.setCacheControl(headerValue);
 	      	Resource file = storageService.load(filename);
 	      	return new ResponseEntity<>(file, headers, HttpStatus.OK);
+	  }
+	 
+	 @GetMapping("/carpeta/{id}")
+	  	public ResponseEntity<ResponseMessage> data(@PathVariable("id") String id){
+		  storageService.carpeta(id);
+		  return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(new ResponseMessage("ok"));
 	  }
 	
 }

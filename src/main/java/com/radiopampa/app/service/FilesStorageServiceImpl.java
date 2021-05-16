@@ -25,6 +25,7 @@ public class FilesStorageServiceImpl implements FilesStorageService {
 
   @Override
   public void init(String path) {
+	  
 	  root = Paths.get(path);
     try {
       Files.createDirectory(root);
@@ -45,6 +46,8 @@ public class FilesStorageServiceImpl implements FilesStorageService {
 
   @Override
   public Resource load(String filename) {
+	
+	  
     try {
       Path file = root.resolve(filename);
       Resource resource = new UrlResource(file.toUri());
