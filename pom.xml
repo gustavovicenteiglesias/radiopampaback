@@ -16,10 +16,9 @@
 	<name>AppRadioPampa</name>
 	<description>Back de RadioPampa </description>
 	<properties>
-      <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-      <maven.compiler.target>11</maven.compiler.target>
-      <maven.compiler.source>11</maven.compiler.source>
-   </properties>
+		<java.version>1.8</java.version>
+	</properties>
+
 	<dependencies>
 		<dependency>
 		    <groupId>commons-io</groupId>
@@ -62,7 +61,11 @@
                 <mainClass>
                   com,radiopampa.app.AppRadioPampaApplication
                 </mainClass>
+                <executable>true</executable>
             </configuration>
+             
+        
+    
         </execution>
     </executions>
 </plugin>
